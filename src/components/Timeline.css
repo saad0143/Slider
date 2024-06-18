@@ -1,12 +1,21 @@
 
 
 .arrow {
-  width: 2px;
+  width: 3px;
   background: linear-gradient(to bottom, #a3e635, #000, #000);
   /* The gradient background will be dynamically set in the component */
 }
 
 .arrow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: solid 5px transparent;
+  border-top-color: #a3e635;
+}
+.arrow2::before {
   content: '';
   position: absolute;
   top: 0;
@@ -24,44 +33,59 @@
   transform: translateX(-50%); 
   width: 0;
   height: 0;
-  border-style: solid;
-  border-width: 20px 10px 0 10px; /* Adjust the border widths for arrow shape */
-  border-color: #000 transparent transparent transparent; /* Transparent on the right half */
+  /* border-style: solid;
+  border-width: 20px 10px 0 10px; /* Adjust the border widths for arrow shape 
+  border-color: #000 transparent transparent transparent; Transparent on the right half */
 }
 
 
 
 
 
-.timeline-step.active {
-  color: #000;
+.timeline-step {
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Apply transition to color and transform */
 }
 
-.timeline-step .step-number {
-  color: #d1d5db;
+.timeline-step .step-number,
+.timeline-step .step-arrow,
+.timeline-step .step-title,
+.timeline-step .step-description {
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Apply transition to transform and color */
 }
 
-.timeline-step.active .step-number {
-  color: #b3e9a5;
+.timeline-step .step-number,
+.timeline-step .step-arrow {
+  color: #d1d5db; /* Default color */
+  transform: translateY(0); /* Default transform */
+}
+
+.timeline-step.active .step-number,
+.timeline-step.active .step-arrow {
+  color: #b3e9a5; /* Active color */
+  transform: translateY(35px); /* Move down by 35px when active */
 }
 
 .timeline-step .step-title {
-  color: #d1d5db;
+  color: #d1d5db; /* Default color */
+  transform: translateY(0); /* Default transform */
 }
 
 .timeline-step.active .step-title {
-  color: #000;
+  color: #000; /* Active color */
+  transform: translateY(35px); /* Move down by 35px when active */
 }
 
 .timeline-step .step-description {
-  color: #d1d5db;
-  border-color: #d1d5db;
+  color: #d1d5db; /* Default color */
+  border-color: #d1d5db; /* Default border color */
 }
 
 .timeline-step.active .step-description {
-  color: #000;
-  border-color: #000;
+  color: #000; /* Active color */
+  border-color: #000; /* Active border color */
 }
+
+
 
 
 @media (min-width: 768px) {
