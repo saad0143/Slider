@@ -41,23 +41,23 @@ const Questions = () => {
   };
 
   return (
-    <div className="p-6 w-full flex justify-center">
+    <div className=" sm:p-6 p-3 w-full flex sm:justify-center justify-start">
 
-      <div className="w-7/12  p-6 rounded-lg">
-        <h1 className="text-4xl font-semibold mb-8 flex justify-start">What Content is Inside Internet Money?</h1>
+      <div className="sm:w-7/12 sm:p-6 p-3 rounded-lg">
+        <h1 className="sm:text-4xl text-2xl font-semibold mb-8 flex justify-start">What Content is Inside Internet Money?</h1>
         {modules.map((module, index) => (
           <div key={index} className="mb-4 hover:scale-[1.03] transform transition-transform duration-300 ease-in-out">
             <button
-              className="w-full text-center py-4 px-8 bg-[#e9e8e8] rounded-[10px] focus:outline-none shadow-sm"
+              className="w-full text-center sm:py-4 sm:px-8 p-2 bg-[#e9e8e8] rounded-[10px] focus:outline-none shadow-sm "
               onClick={() => toggleModule(index)}
             >
               <div className="flex justify-between items-center">
-                <span className="font-bold text-lg">{module.title}</span>
+              <span className="font-bold sm:text-lg text-md text-left sm:text-center">{module.title}</span>
                 <span>{openModule === index ? <CircleArrowUp /> : <CircleArrowDown />}</span>
               </div>
               <div>
                 {openModule === index && module.content && (
-                  <div className="p-4 rounded-lg font-medium text-justify mt-2">{module.content}</div>
+                  <div className="sm:p-4 p-2 rounded-lg font-medium text-justify sm:mt-2">{module.content}</div>
                 )}
               </div>
             </button>

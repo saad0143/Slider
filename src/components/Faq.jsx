@@ -37,25 +37,25 @@ const Faq = () => {
     };
 
     return (
-        <div className="p-6 w-full">
+        <div className="sm:p-6 p-3 w-full ">
 
 
-            <div className='w-full flex justify-center'>
-                <div className="w-7/12  p-6 rounded-lg">
-                    <h1 className="text-4xl font-semibold mb-8 flex justify-start">Frequently Asked Questions</h1>
+            <div className='w-full flex sm:justify-center justify-start'>
+                <div className="sm:w-7/12  sm:p-6 p-3 rounded-lg">
+                <h1 className="sm:text-4xl text-2xl font-semibold mb-8 flex sm:justify-start justify-center">Frequently Asked Questions</h1>
                     {modules.map((module, index) => (
                         <div key={index} className="mb-4 hover:scale-[1.03] transform transition-transform duration-300 ease-in-out">
                             <button
-                                className="w-full text-center py-4 px-8 bg-[#e9e8e8] rounded-[10px] focus:outline-none shadow-sm"
+                                className="w-full text-center sm:py-4 sm:px-8 p-2 bg-[#e9e8e8] rounded-[10px] focus:outline-none shadow-sm "
                                 onClick={() => toggleModule(index)}
                             >
                                 <div className="flex justify-between items-center">
-                                    <span className="font-bold text-lg">{module.title}</span>
+                                    <span className="font-bold sm:text-lg text-md text-left sm:text-center">{module.title}</span>
                                     <span>{openModule === index ? <CircleArrowUp /> : <CircleArrowDown />}</span>
                                 </div>
                                 <div>
                                     {openModule === index && module.content && (
-                                        <div className="p-4 rounded-lg font-medium text-justify mt-2">{module.content}</div>
+                                        <div className="sm:p-4 p-2 rounded-lg font-medium text-justify sm:mt-2">{module.content}</div>
                                     )}
                                 </div>
                             </button>
@@ -67,16 +67,16 @@ const Faq = () => {
             </div>
 
             <div className='w-full flex justify-center mb-5'>
-                <div className='w-8/12 bg-black h-auto py-10 rounded-xl flex items-center justify-center'>
+                <div className='sm:w-8/12 bg-black h-auto py-10 sm:p-0 p-2 rounded-xl flex items-center justify-center'>
                     <div className='text-white p-2'>
-                        <h1 className='text-4xl font-semibold ` '>
+                        <h1 className='sm:text-4xl text-2xl font-semibold ` '>
                             Join Internet Money Now!
                         </h1>
-                        <h1 className='text-xl text-medium mt-3'>
+                        <h1 className='sm:text-xl text-md  text-medium mt-3'>
                             Let's help you make your first $1,000 online
                         </h1>
                         <button className='cursor-pointer mt-6'>
-                            <div className='w-auto py-3 px-16  bg-[#b3e9a5] rounded-lg flex items-center 
+                            <div className='w-auto py-3 sm:px-16 px-5  bg-[#b3e9a5] rounded-lg flex items-center 
                                 justify-center no-underline uppercase'>
                                 <p className='text-md font-bold text-black'>
                                     GET INSTANT ACCESS FOR $35/MO

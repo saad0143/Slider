@@ -76,11 +76,27 @@ const Timeline = () => {
 
       {/* Arrows for Small Screens */}
       <div className='sm:hidden block'>
-        {steps.map((_, index) => (
-          <div key={index} className={`absolute sm:left-[734px] left-2 top-[${110 + index * 210}px]`}>
-            <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-          </div>
-        ))}
+        <div className='absolute top-[110px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[320px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[500px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[750px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[1020px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[1280px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
+        <div className='absolute top-[1500px] sm:left-[734px] left-2'>
+          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+        </div>
       </div>
 
       {/* Step Details */}
