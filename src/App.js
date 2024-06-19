@@ -3,6 +3,8 @@ import './App.css';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Timeline from './components/Timeline';
+import Questions from './components/Questions';
+import Faq from './components/Faq';
 
 function App() {
   return (
@@ -10,8 +12,9 @@ function App() {
 
       <Navbar />
       <Hero />
-      <Timeline/>
-      <Hero />
+      <Timeline />
+      <Questions />
+      <Faq />
 
     </div>
   );

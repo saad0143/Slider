@@ -10,15 +10,15 @@ const Navbar = () => {
                     <img src={logo} alt='logo' className='h-24 w-24 rounded-full object-cover' />
                 </div>
                 <button className='cursor-pointer'>
-                <div className='w-auto py-3 px-6 bg-black text-[#b3e9a5] rounded-lg flex items-center 
+                    <div className='w-auto py-3 px-6 bg-black text-[#b3e9a5] rounded-lg flex items-center 
                 justify-center no-underline uppercase'>
-                    <p className='text-md font-medium'>
-                        Join Now
-                    </p>
-                    <MoveUpRight size={22} className='ml-2' />
-                </div>
+                        <p className='text-md font-medium'>
+                            Join Now
+                        </p>
+                        <MoveUpRight size={22} className='ml-2' />
+                    </div>
                 </button>
-                
+
 
             </div>
         </>
