@@ -18,11 +18,11 @@ const Timeline = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 4;
-      const steps = document.querySelectorAll('.timeline-step');
+      const stepsElements = document.querySelectorAll('.timeline-step');
 
       let foundActiveStep = false;
 
-      steps.forEach((step, index) => {
+      stepsElements.forEach((step, index) => {
         const offsetTop = step.offsetTop;
         const offsetHeight = step.offsetHeight;
 
@@ -31,7 +31,6 @@ const Timeline = () => {
           foundActiveStep = true;
         }
 
-        // Check if the current step should be active or not
         if (index <= activeStep) {
           step.classList.add('active');
         } else {
@@ -39,15 +38,13 @@ const Timeline = () => {
         }
       });
 
-      // Calculate arrow height based on the scroll position
-      const firstStepOffsetTop = steps[0]?.offsetTop || 0;
-      const lastStepOffsetBottom = steps[steps.length - 1]?.offsetTop + steps[steps.length - 1]?.offsetHeight || 0;
+      const firstStepOffsetTop = stepsElements[0]?.offsetTop || 0;
+      const lastStepOffsetBottom = stepsElements[stepsElements.length - 1]?.offsetTop + stepsElements[stepsElements.length - 1]?.offsetHeight || 0;
       const maxArrowHeight = lastStepOffsetBottom - firstStepOffsetTop;
 
       const scrollPercentage = (scrollPosition - firstStepOffsetTop) / maxArrowHeight;
       let newArrowHeight = scrollPercentage * maxArrowHeight;
 
-      // Ensure the arrow height doesn't exceed the bottom of the last step
       if (newArrowHeight > maxArrowHeight) {
         newArrowHeight = maxArrowHeight;
       }
@@ -76,27 +73,11 @@ const Timeline = () => {
 
       {/* Arrows for Small Screens */}
       <div className='sm:hidden block'>
-        <div className='absolute top-[110px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[320px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[500px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[750px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[1020px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[1280px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
-        <div className='absolute top-[1500px] sm:left-[734px] left-2'>
-          <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-        </div>
+        {[110, 320, 500, 750, 1020, 1280, 1500].map((top, index) => (
+          <div key={index} className={`absolute top-[${top}px] left-2`}>
+            <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
+          </div>
+        ))}
       </div>
 
       {/* Step Details */}
@@ -104,12 +85,12 @@ const Timeline = () => {
         <div className={`timeline-step sm:flex w-9/12 sm:my-8 my-5 sm:p-5 relative ${index === activeStep ? 'active' : ''}`} key={index}>
           <div className="sm:flex sm:w-[47%] items-center justify-center">
             <div>
-              <h2 className={`step-number text-8xl font-bold`}>
+              <h2 className="step-number text-8xl font-bold">
                 {index + 1}
               </h2>
             </div>
             <div>
-              <h3 className={`step-title sm:text-2xl text-md font-bold uppercase flex justify-center sm:ml-5 sm:mr-[-35px] sm:mt-2`}>
+              <h3 className="step-title sm:text-2xl text-md font-bold uppercase flex justify-center sm:ml-5 sm:mr-[-35px] sm:mt-2">
                 {step.title}
               </h3>
             </div>
@@ -121,7 +102,7 @@ const Timeline = () => {
           </div>
           <div className="sm:flex-1 sm:w-[47%] justify-center sm:ml-10">
             <div>
-              <p className={`step-description sm:text-lg text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 py-2 rounded-lg sm:border-black sm:text-left sm:w-[350px] w-full sm:mt-0 mt-8`}>
+              <p className="step-description sm:text-lg text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 py-2 rounded-lg sm:border-black sm:text-left sm:w-[350px] w-full sm:mt-0 mt-8">
                 {step.description}
               </p>
             </div>
