@@ -12,8 +12,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  border: solid 5px transparent;
-  border-top-color: #a3e635;
+  
 }
 .arrow2::before {
   content: '';
@@ -54,15 +53,23 @@
 }
 
 .timeline-step .step-number,
+.timeline-step .step-arrow-small,
 .timeline-step .step-arrow {
   color: #d1d5db; /* Default color */
   transform: translateY(0); /* Default transform */
 }
 
-.timeline-step.active .step-number,
+.timeline-step.active .step-number{
+  color: #b3e9a5; /* Active color */
+  transform: translateY(30px); /* Move down by 35px when active */
+}
 .timeline-step.active .step-arrow {
   color: #b3e9a5; /* Active color */
-  transform: translateY(35px); /* Move down by 35px when active */
+  transform: translateY(60px); /* Move down by 35px when active */
+}
+.timeline-step.active .step-arrow-small {
+  color: #b3e9a5; /* Active color */
+  transform: translateY(60px); /* Move down by 35px when active */
 }
 
 .timeline-step .step-title {

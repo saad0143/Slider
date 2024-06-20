@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Timeline.css';
 import arrow from '../assets/arrow.png';
 
@@ -12,23 +12,30 @@ const steps = [
 ];
 
 const Timeline = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(-1); // Start with -1 to keep all steps inactive initially
   const [arrowHeight, setArrowHeight] = useState(0);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 4;
-      const stepsElements = document.querySelectorAll('.timeline-step');
-
+      if (!timelineRef.current) return;
+      const scrollPosition = window.scrollY + window.innerHeight / 2.5;
+      const stepsElements = timelineRef.current.querySelectorAll('.timeline-step');
+      console.log(scrollPosition);
       let foundActiveStep = false;
 
       stepsElements.forEach((step, index) => {
-        const offsetTop = step.offsetTop;
+        const offsetTop = step.getBoundingClientRect().top + window.scrollY;
         const offsetHeight = step.offsetHeight;
 
-        if (!foundActiveStep && scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+        if (!foundActiveStep && scrollPosition - 80 > offsetTop && scrollPosition < offsetTop + offsetHeight) {
           setActiveStep(index);
           foundActiveStep = true;
+          
+        }
+
+        if (scrollPosition > 300 && scrollPosition < 350 ) {
+          setActiveStep(-1); 
         }
 
         if (index <= activeStep) {
@@ -38,8 +45,8 @@ const Timeline = () => {
         }
       });
 
-      const firstStepOffsetTop = stepsElements[0]?.offsetTop || 0;
-      const lastStepOffsetBottom = stepsElements[stepsElements.length - 1]?.offsetTop + stepsElements[stepsElements.length - 1]?.offsetHeight || 0;
+      const firstStepOffsetTop = stepsElements[0]?.getBoundingClientRect().top + window.scrollY || 0;
+      const lastStepOffsetBottom = stepsElements[stepsElements.length - 1]?.getBoundingClientRect().top + window.scrollY + stepsElements[stepsElements.length - 1]?.offsetHeight || 0;
       const maxArrowHeight = lastStepOffsetBottom - firstStepOffsetTop;
 
       const scrollPercentage = (scrollPosition - firstStepOffsetTop) / maxArrowHeight;
@@ -60,11 +67,12 @@ const Timeline = () => {
     };
   }, [activeStep]);
 
+
   return (
-    <div className="flex flex-col items-center relative px-5 sm:py-5">
+    <div ref={timelineRef} className="flex flex-col items-center relative px-5 sm:pb-5">
       {/* Arrow Line */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
-        <div className="w-[3px] bg-gray-500 sm:h-[1200px] h-[1520px] relative"></div>
+        <div className="w-[3px] bg-gray-500 sm:h-[1180px] h-[1520px] relative"></div>
       </div>
       {/* Dynamic Arrow */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
@@ -82,7 +90,7 @@ const Timeline = () => {
 
       {/* Step Details */}
       {steps.map((step, index) => (
-        <div className={`timeline-step sm:flex w-9/12 sm:my-8 my-5 sm:p-5 relative ${index === activeStep ? 'active' : ''}`} key={index}>
+        <div className={`timeline-step sm:flex w-9/12 sm:my-7 my-5 sm:p-5 relative ${index === activeStep ? 'active' : ''}`} key={index}>
           <div className="sm:flex sm:w-[47%] items-center justify-center">
             <div>
               <h2 className="step-number text-8xl font-bold">
@@ -95,17 +103,14 @@ const Timeline = () => {
               </h3>
             </div>
           </div>
-          <div className='step-arrow w-[6%] sm:flex justify-center mt-[-60px] sm:block hidden'>
-            {index !== 0 && (
-              <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
-            )}
+          <div className='step-arrow w-[6%] sm:flex justify-center mt-[10px] sm:block hidden'>
+            <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
           </div>
-          <div className="sm:flex-1 sm:w-[47%] justify-center sm:ml-10">
-            <div>
-              <p className="step-description sm:text-lg text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 py-2 rounded-lg sm:border-black sm:text-left sm:w-[350px] w-full sm:mt-0 mt-8">
-                {step.description}
-              </p>
-            </div>
+          <div className="sm:flex-1 sm:w-[47%] flex justify-center items-center mt-5">
+            <p className="step-description sm:text-lg text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 
+            py-2 rounded-lg sm:border-black sm:text-left sm:w-[380px] w-full sm:mt-0 mt-2">
+              {step.description}
+            </p>
           </div>
         </div>
       ))}
