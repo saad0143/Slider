@@ -44,8 +44,8 @@ const Faq = () => {
                 <div className="sm:w-7/12  sm:p-6 p-3 rounded-lg">
                     <h1 className="sm:text-4xl text-2xl font-semibold mb-8 flex sm:justify-start justify-center">Frequently Asked Questions</h1>
                     {modules.map((module, index) => (
-                        <div key={index} className="mb-4">
-                            <button
+                        <div key={index} className="mb-4 cursor-default">
+                            <div
                                 className="w-full text-center sm:py-4 sm:px-8 p-2 bg-[#e9e8e8] rounded-[10px] focus:outline-none shadow-sm"
                                 onClick={() => toggleModule(index)}
                             >
@@ -64,7 +64,7 @@ const Faq = () => {
                                         <div className="sm:p-4 p-2 rounded-lg font-medium text-justify sm:mt-2 h-auto">{module.content}</div>
                                     )}
                                 </div>
-                            </button>
+                            </div>
                         </div>
                     ))}
                 </div>
