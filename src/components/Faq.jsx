@@ -79,7 +79,7 @@ const Faq = () => {
                         <h1 className='sm:text-xl text-md text-medium mt-3'>
                             Let's help you make your first $1,000 online
                         </h1>
-                        <button className='cursor-pointer mt-6'>
+                        <button className='cursor-pointer mt-6 mb-4'>
                             <div className='w-auto py-3 sm:px-16 px-5 bg-[#b3e9a5] rounded-lg flex items-center justify-center no-underline uppercase'>
                                 <p className='text-md font-bold text-black'>
                                     GET INSTANT ACCESS FOR $35/MO
