@@ -98,7 +98,7 @@ const Timeline = () => {
               </h2>
             </div>
             <div>
-              <h3 className="step-title sm:text-2xl sm:w-[280px] text-md font-bold  flex justify-end sm:mt-2">
+              <h3 className="step-title sm:text-2xl sm:w-[275px] text-md font-bold  flex justify-end sm:mt-2">
                 {step.title}
               </h3>
             </div>
