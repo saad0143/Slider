@@ -72,7 +72,7 @@ const Timeline = () => {
     <div ref={timelineRef} className="flex flex-col items-center relative px-5 sm:pb-5">
       {/* Arrow Line */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
-        <div className="w-[3px] bg-gray-500 sm:h-[1180px] h-[1520px] relative"></div>
+        <div className="w-[3px] bg-gray-500 sm:h-[1145px] h-[1520px] relative"></div>
       </div>
       {/* Dynamic Arrow */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
