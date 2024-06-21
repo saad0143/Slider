@@ -98,7 +98,7 @@ const Timeline = () => {
               </h2>
             </div>
             <div>
-              <h3 className="step-title sm:text-2xl sm:w-[275px] text-md font-bold  flex justify-end sm:mt-2">
+              <h3 className="step-title sm:text-2xl sm:w-[275px] text-md font-bold  flex justify-center sm:justify-end sm:mt-2">
                 {step.title}
               </h3>
             </div>
@@ -108,7 +108,7 @@ const Timeline = () => {
           </div>
           <div className="sm:flex-1 sm:w-[47%] flex justify-center items-center mt-5">
             <p className="step-description sm:text-md text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 
-            py-2 rounded-lg sm:border-black sm:text-left sm:w-[330px] w-full sm:mt-0 mt-2">
+            py-2 rounded-lg sm:border-black sm:text-left text-justify sm:w-[330px] w-full sm:mt-0 mt-2">
               {step.description}
             </p>
           </div>
