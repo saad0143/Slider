@@ -72,7 +72,7 @@ const Timeline = () => {
     <div ref={timelineRef} className="flex flex-col items-center relative px-5 sm:pb-5">
       {/* Arrow Line */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
-        <div className="w-[3px] bg-gray-500 sm:h-[1145px] h-[1520px] relative"></div>
+        <div className="w-[3px] bg-gray-500 sm:h-[1110px] h-[1520px] relative"></div>
       </div>
       {/* Dynamic Arrow */}
       <div className="arrow-container absolute sm:top-0 left-8 sm:left-[50%] transform sm:-translate-x-1/2 z-10 mb-10">
@@ -90,7 +90,7 @@ const Timeline = () => {
 
       {/* Step Details */}
       {steps.map((step, index) => (
-        <div className={`timeline-step sm:flex w-9/12 sm:my-7 my-5 sm:p-5 relative ${index === activeStep ? 'active' : ''}`} key={index}>
+        <div className={`timeline-step sm:flex w-8/12 sm:my-7 my-5 sm:p-5 relative ${index === activeStep ? 'active' : ''}`} key={index}>
           <div className="sm:flex sm:w-[47%] items-center justify-center">
             <div>
               <h2 className="step-number text-8xl font-bold">
@@ -98,7 +98,7 @@ const Timeline = () => {
               </h2>
             </div>
             <div>
-              <h3 className="step-title sm:text-2xl text-md font-bold uppercase flex justify-center sm:ml-5 sm:mr-[-35px] sm:mt-2">
+              <h3 className="step-title sm:text-2xl sm:w-[280px] text-md font-bold  flex justify-end sm:mt-2">
                 {step.title}
               </h3>
             </div>
@@ -107,8 +107,8 @@ const Timeline = () => {
             <img src={arrow} alt="arrow" style={{ height: '50px', width: '50px' }} className='relative' />
           </div>
           <div className="sm:flex-1 sm:w-[47%] flex justify-center items-center mt-5">
-            <p className="step-description sm:text-lg text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 
-            py-2 rounded-lg sm:border-black sm:text-left sm:w-[380px] w-full sm:mt-0 mt-2">
+            <p className="step-description sm:text-md text-md sm:p-2 sm:border-2 sm:px-5 sm:py-3 
+            py-2 rounded-lg sm:border-black sm:text-left sm:w-[330px] w-full sm:mt-0 mt-2">
               {step.description}
             </p>
           </div>
